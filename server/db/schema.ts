@@ -78,3 +78,13 @@ export const freeTextNotes = pgTable('free_text_notes', {
     insertedAt: timestamp('inserted_at', { withTimezone: false }).notNull(),
 });
 
+export const resolvedEvents = pgTable('resolved_events', {
+    id: serial('id').primaryKey(),
+    entityId: varchar('entity_id', { length: 255 }).notNull(),
+    sourceTable: varchar('source_table', { length: 255 }).notNull(),
+    sourceRecordId: varchar('source_record_id', { length: 255 }).notNull(),
+    eventTime: timestamp('event_time', { withTimezone: false }).notNull(),
+    locationId: varchar('location_id', { length: 255 }),
+    insertedAt: timestamp('inserted_at', { withTimezone: false }).defaultNow()
+});
+
